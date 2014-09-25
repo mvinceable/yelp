@@ -37,7 +37,7 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    self.tableView.estimatedRowHeight = 116;
+    self.tableView.estimatedRowHeight = 117;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     
     // add filter button
