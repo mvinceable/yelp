@@ -1,6 +1,6 @@
 # Yelp iOS Application
 
-This is an iOS iPhone application that allows searching for business using the [Yelp API](http://www.yelp.com/developers/documentation/v2/search_api).
+This is an iOS iPhone application that can search for businesses using the [Yelp API](http://www.yelp.com/developers/documentation/v2/search_api), filter the search results, and display detailed information about a business.
 
 Time spent: 18 hours spent in total
 
