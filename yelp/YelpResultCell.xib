@@ -39,12 +39,6 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$$" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7eB-T6-dfa">
-                        <rect key="frame" x="298" y="31" width="14" height="15"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="H9v-rq-zp8">
                         <rect key="frame" x="116" y="44" width="84" height="17"/>
                         <constraints>
@@ -58,25 +52,15 @@
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.07 mi" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tnq-1Q-04B">
-                        <rect key="frame" x="270" y="8" width="42" height="15"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="GIb-zk-iLF" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="2OM-X6-Civ"/>
                     <constraint firstItem="Ngg-H4-Bke" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="2jZ-Ln-hj1"/>
-                    <constraint firstItem="Tnq-1Q-04B" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="33h-lq-0tn"/>
                     <constraint firstItem="gaR-1v-caC" firstAttribute="leading" secondItem="Ngg-H4-Bke" secondAttribute="trailing" constant="8" id="51m-mS-pPf"/>
                     <constraint firstItem="sOl-zh-mdy" firstAttribute="top" secondItem="Zjr-rO-qSW" secondAttribute="bottom" constant="8" id="6uT-FM-krO"/>
                     <constraint firstItem="GIb-zk-iLF" firstAttribute="leading" secondItem="Ngg-H4-Bke" secondAttribute="trailing" constant="8" id="7cf-ve-bfS"/>
                     <constraint firstItem="GIb-zk-iLF" firstAttribute="top" secondItem="gaR-1v-caC" secondAttribute="bottom" constant="8" id="B9m-Ky-Zpm"/>
-                    <constraint firstItem="Tnq-1Q-04B" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="C4X-R8-3aO"/>
-                    <constraint firstItem="7eB-T6-dfa" firstAttribute="top" secondItem="Tnq-1Q-04B" secondAttribute="bottom" constant="8" id="R4f-ZD-Lw9"/>
                     <constraint firstItem="H9v-rq-zp8" firstAttribute="top" secondItem="Zjr-rO-qSW" secondAttribute="bottom" constant="8" id="VPu-3U-50J"/>
-                    <constraint firstItem="7eB-T6-dfa" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="VcO-Eh-uYd"/>
                     <constraint firstAttribute="bottomMargin" secondItem="GIb-zk-iLF" secondAttribute="bottom" id="X7x-4i-zzm"/>
                     <constraint firstItem="Zjr-rO-qSW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="bdT-Sl-kJj"/>
                     <constraint firstItem="Ngg-H4-Bke" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="cur-GV-gAK"/>
@@ -89,10 +73,8 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="address" destination="gaR-1v-caC" id="Ijl-LK-42u"/>
-                <outlet property="businessDistance" destination="Tnq-1Q-04B" id="DOk-Xk-5Gy"/>
                 <outlet property="businessName" destination="Zjr-rO-qSW" id="rij-gf-z2j"/>
                 <outlet property="categories" destination="GIb-zk-iLF" id="7aJ-6n-JAa"/>
-                <outlet property="priceType" destination="7eB-T6-dfa" id="p1r-A2-plW"/>
                 <outlet property="ratingView" destination="H9v-rq-zp8" id="h3l-cx-AmN"/>
                 <outlet property="reviewCount" destination="sOl-zh-mdy" id="nGA-AE-R82"/>
                 <outlet property="thumbView" destination="Ngg-H4-Bke" id="nIY-I7-bTZ"/>

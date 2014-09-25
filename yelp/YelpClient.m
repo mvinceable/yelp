@@ -27,8 +27,10 @@
     
     if (filters) {
         [filters addEntriesFromDictionary:parameters];
+        NSLog(@"%@", filters);
         return [self GET:@"search" parameters:filters success:success failure:failure];
     } else {
+        NSLog(@"%@", parameters);
         return [self GET:@"search" parameters:parameters success:success failure:failure];
     }
 }

@@ -138,7 +138,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void) categoryChanged:(id)sender {
+- (void)switchChanged:(id)sender {
     UISwitch *categorySwitch = (UISwitch *)sender;
     UITableViewCell *cell = (UITableViewCell *) categorySwitch.superview;
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
@@ -202,15 +202,13 @@
                 [cell.categorySwitch setOn:NO animated:NO];
             }
             // add handler for UISwitch
-            cell.accessoryView = cell.categorySwitch;
-            [cell.categorySwitch addTarget:self action:@selector(categoryChanged:) forControlEvents:UIControlEventValueChanged];
-            
+            cell.delegate = self;
             return cell;
         } else {
-            // the Show All cell
+            // the See All cell
             UITableViewCell *cell = [[UITableViewCell alloc] init];
             UILabel *showAllLabel = [[UILabel alloc] initWithFrame:CGRectMake(8, 0, 320, 50)];
-            showAllLabel.text = @"Show All";
+            showAllLabel.text = @"See All";
             [cell addSubview:showAllLabel];
             return cell;
         }
@@ -219,6 +217,10 @@
         UILabel *sortLabel = [[UILabel alloc] initWithFrame:CGRectMake(8, 0, 320, 50)];
         if (self.isSortExpanded) {
             sortLabel.text = self.sortTypes[row];
+            // lighten unselected options
+            if (row != self.selectedSortType) {
+                sortLabel.textColor = [UIColor colorWithWhite:0.5 alpha:1];
+            }
         } else {
             sortLabel.text = self.sortTypes[self.selectedSortType];
         }
@@ -229,6 +231,11 @@
         UILabel *distanceLabel = [[UILabel alloc] initWithFrame:CGRectMake(8, 0, 320, 50)];
         if (self.isDistanceExpanded) {
             distanceLabel.text = self.distances[row][@"name"];
+            // lighten unselected options
+            if (row != self.selectedDistance) {
+                distanceLabel.textColor = [UIColor colorWithWhite:0.5 alpha:1];
+            }
+
         } else {
             distanceLabel.text = self.distances[self.selectedDistance][@"name"];
         }
@@ -244,8 +251,7 @@
             [cell.categorySwitch setOn:NO animated:NO];
         }
         // add handler for UISwitch
-        cell.accessoryView = cell.categorySwitch;
-        [cell.categorySwitch addTarget:self action:@selector(categoryChanged:) forControlEvents:UIControlEventValueChanged];
+        cell.delegate = self;
             
         return cell;
     }
@@ -260,9 +266,11 @@
     NSInteger row = indexPath.row;
     
     if (section == 0) {
-        // Show All Categories
+        // See All Categories
         if (row == 3 && !self.isCategoriesExpanded) {
             self.isCategoriesExpanded = YES;
+        } else {
+            self.isCategoryEnabled[@(row)] = @(!self.isCategoryEnabled[@(row)]);
         }
     } else if (section == 1) {
         self.isSortExpanded = !self.isSortExpanded;

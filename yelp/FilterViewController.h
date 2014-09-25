@@ -7,13 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CategoryFilterCell.h"
 
 @protocol FilterViewControllerDelegate <NSObject>
 
 - (void)applyCategories:(NSArray *)categories categoriesEnabled:(NSMutableDictionary *) categoriesEnabled sortType:(NSInteger) sortType distance:(NSString *) distance deals:(BOOL) isDealsEnabled;
 @end
 
-@interface FilterViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface FilterViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, CategoryFilterCellDelegate>
 @property (nonatomic, weak) id <FilterViewControllerDelegate> delegate;
 
 @end

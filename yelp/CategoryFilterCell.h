@@ -8,8 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol CategoryFilterCellDelegate <NSObject>
+
+- (void)switchChanged:(id)sender;
+
+@end
+
 @interface CategoryFilterCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *categoryLabel;
 @property (weak, nonatomic) IBOutlet UISwitch *categorySwitch;
+
+@property (nonatomic, weak) id <CategoryFilterCellDelegate> delegate;
 
 @end

@@ -11,6 +11,7 @@
 #import "YelpClient.h"
 #import "UIImageView+AFNetworking.h"
 #import "FilterViewController.h"
+#import "InfoViewController.h"
 
 NSString * const kYelpConsumerKey = @"vxKwwcR_NMQ7WaEiQBK_CA";
 NSString * const kYelpConsumerSecret = @"33QCvh5bIF5jIHR5klQr7RtBDhQ";
@@ -119,6 +120,39 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // unhighlight selection
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    // show info view
+    self.navigationItem.backBarButtonItem.title = @"Search";
+    NSDictionary *business = self.results[indexPath.row];
+    NSString *thumbUrl = business[@"image_url"];
+    NSString *ratingImgUrl = business[@"rating_img_url"];
+    NSString *name = business[@"name"];
+    NSNumber *reviewCount = business[@"review_count"];
+    
+    NSArray *categoriesArray = business[@"categories"];
+    NSArray *firstCategory = categoriesArray[0];
+    NSMutableString *categories = [[NSMutableString alloc] initWithString:@""];
+    
+    if (firstCategory[0]) {
+        [categories appendString:firstCategory[0]];
+        for (int i = 1; i < categoriesArray.count; i++) {
+            [categories appendString:[NSString stringWithFormat:@", %@", [categoriesArray[i] objectAtIndex:0]]];
+        }
+    }
+    
+    NSArray *displayAddressArray = [business valueForKeyPath:@"location.display_address"];
+    NSMutableString *address = [[NSMutableString alloc] initWithString:displayAddressArray[0]];
+    for (int i = 2; i < displayAddressArray.count; i++) {
+        [address appendString:[NSString stringWithFormat:@", %@", displayAddressArray[i]]];
+    }
+    
+    NSString *phone = business[@"display_phone"];
+    NSString *snippetImgUrl = business[@"snippet_image_url"];
+    NSString *snippet = [NSString stringWithFormat:@"\"%@\"", business[@"snippet_text"]];
+    
+    InfoViewController *vc = [[InfoViewController alloc] initWithImgUrl:thumbUrl ratingImgUrl:ratingImgUrl name:name reviewCount:reviewCount categories:categories address:address phone:phone snippetImgUrl:snippetImgUrl snippet:snippet];
+    
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)searchWithTerm:(NSString *)term withFilters:(NSDictionary *)filters {
@@ -136,6 +170,8 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
 }
 
 - (void)filter {
+    // show filter view
+    self.navigationItem.backBarButtonItem.title = @"Cancel";
     FilterViewController *vc = [[FilterViewController alloc] init];
     vc.delegate = self;
     [self.navigationController pushViewController:vc animated:YES];
@@ -176,4 +212,5 @@ NSString * const kYelpTokenSecret = @"mqtKIxMIR4iBtBPZCmCLEb-Dz3Y";
     // Pass the selected object to the new view controller.
 }
 */
+
 @end

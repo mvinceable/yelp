@@ -9,9 +9,13 @@
 #import "CategoryFilterCell.h"
 
 @implementation CategoryFilterCell
+- (IBAction)switchChanged:(id)sender {
+    [self.delegate switchChanged:sender];
+}
 
 - (void)awakeFromNib {
     // Initialization code
+    self.accessoryView = self.categorySwitch;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
